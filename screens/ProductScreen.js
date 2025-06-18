@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
@@ -87,16 +87,36 @@ export default function HomeScreen() {
           </View>
           <View style={styles.categoryItem}>
             <Image
-              source={{ uri: 'https://i.imgur.com/zLDcLMB.jpeg' }} // Example thali image from imgur
+              source={{ uri: 'https://i.imgur.com/zLDcLMB.jpeg' }}
               style={styles.categoryImage}
             />
             <Text style={styles.categoryLabel}>Thali</Text>
           </View>
         </View>
+
+        {/* Navigation Buttons */}
+        <View style={styles.navigationButtons}>
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate('Profile')}
+          >
+            <Ionicons name="person-circle-outline" size={24} color="#fff" />
+            <Text style={styles.navButtonText}>Go to Profile</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate('Cart')}
+          >
+            <Ionicons name="cart-outline" size={24} color="#fff" />
+            <Text style={styles.navButtonText}>Go to Cart</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -222,5 +242,23 @@ const styles = StyleSheet.create({
   categoryLabel: {
     fontSize: 14,
     fontWeight: '500',
+  },
+    navigationButtons: {
+    marginTop: 24,
+    gap: 12,
+  },
+  navButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#ff3b30',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+  },
+  navButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 8,
   },
 });
