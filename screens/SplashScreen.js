@@ -13,7 +13,7 @@ export default function SplashScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/cp.png')} // Make sure logo.png is in your /assets folder
+        source={require('../assets/cp.png')}
         style={styles.logo}
         resizeMode="contain"
       />
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 180,
-    height: 180,
+    width: 90,
+    height: 90,
   },
 });
