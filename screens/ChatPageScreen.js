@@ -146,7 +146,7 @@ export default function ChatPageScreen({ navigation }) {
             columns={8}
             style={{ flex: 1 }}
             theme={{
-              fontSize: 16, // explicitly positive value
+              fontSize: 16,
             }}
           />
         </View>
