@@ -1,27 +1,23 @@
-import { View, Text, StyleSheet } from 'react-native';
-import Header from './components/Header';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import HomePageScreen from "./screens/HomePageScreen";
+import LoginPageScreen from "./screens/LoginPageScreen";
+import SignupPageScreen from "./screens/SignupPageScreen";
+import ContactUsPageScreen from "./screens/ContactUsPageScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View>
-        <Header/>
-      </View>
-      <Text style={styles.text}>Ayomide is coming! 🎉</Text>
-    </View>
-  );
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomePageScreen} />
+        <Stack.Screen name="Login" component={LoginPageScreen} />
+        <Stack.Screen name="Signup" component={SignupPageScreen} />
+        <Stack.Screen name="Contact" component={ContactUsPageScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#ffffff', // Tailwind white
-    paddingTop: 50,
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#3b82f6', // Tailwind blue-600
-  },
-});
