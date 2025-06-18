@@ -137,16 +137,20 @@ export default function ChatPageScreen({ navigation }) {
 
       {/* Input */}
       {showEmojiPicker && (
-        <EmojiSelector
-          onEmojiSelected={(emoji) => setInputText((prev) => prev + emoji)}
-          showSearchBar={false}
-          showTabs={true}
-          category={EmojiSelector.categories.all}
-          columns={8}
-          style={{ height: 250 }}
-        />
+        <View style={{ height: 250 }}>
+          <EmojiSelector
+            onEmojiSelected={(emoji) => setInputText((prev) => prev + emoji)}
+            showSearchBar={false}
+            showTabs={true}
+            category="all"
+            columns={8}
+            style={{ flex: 1 }}
+            theme={{
+              fontSize: 16, // explicitly positive value
+            }}
+          />
+        </View>
       )}
-
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         keyboardVerticalOffset={90}
@@ -240,7 +244,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 20,
   },
-  avatar: { width: 30, height: 30, borderRadius: 15 },
+  avatar: { width: 30, height: 30, borderRadius: 15, marginRight: 6, },
   typingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
