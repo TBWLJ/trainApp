@@ -5,7 +5,7 @@ export default function SplashScreen({ navigation }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.replace('Home'); // Automatically go to Home after 2 seconds
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [navigation]);

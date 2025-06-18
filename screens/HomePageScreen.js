@@ -10,6 +10,7 @@ export default function HomePageScreen({ navigation }) {
         <Button title="Signup" onPress={() => navigation.navigate('Signup')} />
         <Button title="Contact" onPress={() => navigation.navigate('Contact')} />
         <Button title="Product" onPress={() => navigation.navigate('Product')} />
+        <Button title="Chat" onPress={() => navigation.navigate('Chat')} />
       </View>
     </View>
   );

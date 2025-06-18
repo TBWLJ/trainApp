@@ -10,6 +10,7 @@ import ContactUsPageScreen from "./screens/ContactUsPageScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import ChatPageScreen from "./screens/ChatPageScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +19,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Splash" // <- Show Splash first
-        screenOptions={{ headerShown: false }} // Hide headers
+        screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Home" component={HomePageScreen} />
@@ -28,6 +29,7 @@ export default function App() {
         <Stack.Screen name="Product" component={ProductScreen} />
         <Stack.Screen name="Cart" component={CartScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Chat" component={ChatPageScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
