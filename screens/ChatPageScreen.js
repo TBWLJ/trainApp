@@ -237,6 +237,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 12,
     fontSize: 16,
+    marginButtom: 40,
   },
   sendButton: {
     marginLeft: 8,
