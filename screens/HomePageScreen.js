@@ -1,32 +1,43 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from 'react'
+import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native'
+import cp from "../assets/cp.png"
 
-export default function HomePageScreen({ navigation }) {
+export default function HomePageScreen( navigation ) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home Page</Text>
+      <Text>Home Page</Text>
       <View style={styles.inner}>
-        <Button title="Login" onPress={() => navigation.navigate('Login')} />
-        <Button title="Signup" onPress={() => navigation.navigate('Signup')} />
-        <Button title="Contact" onPress={() => navigation.navigate('Contact')} />
-        <Button title="Product" onPress={() => navigation.navigate('Product')} />
-        <Button title="Chat" onPress={() => navigation.navigate('Chat')} />
+        <View>
+          <Image source={cp} style={styles.image} />
+        </View>
+        <View>
+          <Button title="Login" onPress={() => navigation.navigate('Login')} />
+        </View>
+      </View>
+      <View>
+        <Text></Text>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    justifyContent: 'center',
-    alignItems: 'center' },
-  title: { 
-    fontSize: 24, 
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    marginTop: 25
+  },
+  title: {
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20 },
-    inner: {
-        display: "flex",
-        padding: 10
-    }
-});
+    marginButtom: 20,
+  },
+  inner: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  image: {
+    width: 20,
+    height: 20
+  }
+})
