@@ -1,63 +1,115 @@
-import React from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  Button, 
-  StyleSheet, 
-  KeyboardAvoidingView, 
-  TouchableWithoutFeedback, 
-  Keyboard, 
-  ScrollView 
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+  ScrollView,
+  Platform,
+  Alert
 } from 'react-native';
 
 export default function LoginPageScreen() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = () => {
+    if (!email || !password) {
+      setError('Email and password are required.');
+      return;
+    }
+
+    setError('');
+    Alert.alert('Success', 'Logged in successfully!');
+    // Add login logic or navigation here
+  };
+
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior="height"
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      keyboardVerticalOffset={60}
     >
-      {/* Only one direct child is passed here */}
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        {/* Wrap everything inside ScrollView to enable scrolling when keyboard is visible */}
-        <ScrollView contentContainerStyle={styles.container}>
-          <Text style={styles.title}>Login Here</Text>
-          <TextInput
-            placeholder="Email"
-            style={styles.input}
-            keyboardType="email-address"
-          />
-          <TextInput
-            placeholder="Password"
-            secureTextEntry
-            style={styles.input}
-            keyboardType="default"
-          />
-          <Button title="Login" onPress={() => {}} />
-        </ScrollView>
-      </TouchableWithoutFeedback>
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Text style={styles.title}>Login Here</Text>
+
+        <TextInput
+          placeholder="Email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          style={styles.input}
+          onChangeText={setEmail}
+          value={email}
+        />
+
+        <TextInput
+          placeholder="Password"
+          secureTextEntry
+          style={styles.input}
+          onChangeText={setPassword}
+          value={password}
+        />
+
+        {error !== '' && <Text style={styles.error}>{error}</Text>}
+
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+  },
+  scrollContainer: {
+    flexGrow: 1,
     justifyContent: 'center',
-    paddingHorizontal: 20,
-    paddingBottom: 20, // Prevents the bottom part of the content from being covered by the keyboard
+    paddingHorizontal: 24,
+    paddingVertical: 40,
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 20,
+    color: '#3DC2AA',
+    marginBottom: 30,
     textAlign: 'center',
   },
   input: {
+    backgroundColor: '#fff',
+    borderColor: '#ddd',
     borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 15,
+    fontSize: 16,
+  },
+  error: {
+    color: 'red',
     marginBottom: 10,
-    borderRadius: 5,
+    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#3DC2AA',
+    paddingVertical: 14,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
