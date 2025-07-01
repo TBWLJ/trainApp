@@ -3,13 +3,12 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
   Image,
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-import cp from '../assets/cp.png';
+import panelly from '../assets/panelly.png';
 
 export default function HomePageScreen({ navigation }) {
   return (
@@ -18,7 +17,7 @@ export default function HomePageScreen({ navigation }) {
 
         {/* Header Section */}
         <View style={styles.header}>
-          <Image source={cp} style={styles.image} />
+          <Image source={panelly} style={styles.image} />
           <TouchableOpacity style={styles.headerButton} onPress={() => navigation.navigate('Login')}>
             <Text style={styles.headerButtonText}>Login</Text>
           </TouchableOpacity>

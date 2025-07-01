@@ -4,7 +4,7 @@ import { View, Image, StyleSheet } from 'react-native';
 export default function SplashScreen({ navigation }) {
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('Home'); // Automatically go to Home after 2 seconds
+      navigation.replace('Home');
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -13,7 +13,7 @@ export default function SplashScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/cp.png')}
+        source={require('../assets/panelly.png')}
         style={styles.logo}
         resizeMode="contain"
       />
